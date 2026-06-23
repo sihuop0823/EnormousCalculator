@@ -1,9 +1,15 @@
+import re
+
 expression = input()
 
 exStack = []
 res = 0
 num = ""
 op = "+"
+excep = re.compile(r'[가-힣a-zA-Z]')
+
+if excep.match(expression):
+    print("연산할 수 없는 문자가 포함되어 있습니다")
 
 for ch in expression:
     if ch.isdigit():
