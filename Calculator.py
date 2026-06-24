@@ -1,4 +1,5 @@
 import re
+import math
 
 expression = input().replace(" ", "")
 
@@ -29,6 +30,13 @@ for ch in expression:
     if ch.isdigit():
         n += ch
 
+    elif ch == "!":
+        if n == "":
+            print("잘못된 팩토리얼 사용입니다")
+            exit()
+
+        n = str(math.factorial(int(n)))
+
     elif ch in "+-*/":
         if n == "":
             if ch == "-":
@@ -37,7 +45,7 @@ for ch in expression:
             elif ch == "+":
                 plusminusSign = 1
                 continue
-            print("잘못된 수식입니다")
+            print("뭔가 잘못된 수식입니다")
             exit()
 
         apply(exStack, op, int(n) * plusminusSign)
@@ -83,6 +91,8 @@ print(sum(exStack))
 5. ) 를 만나면 괄호 안 결과를 구해서 괄호 밖 계산에 이어서 사용
 
 6. 마지막 숫자를 처리하고 스택 합계를 출력
+
+7. 팩토리얼을 넣고 싶었음
 '''
 
 
