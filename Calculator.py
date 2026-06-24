@@ -30,9 +30,23 @@ for ch in expression:
     if ch.isdigit():
         n += ch
 
+    elif ch == ".":
+        if "." in n:
+            print("소수점은 한 번만 사용할 수 있습니다")
+            exit()
+
+        if n == "":
+            n = "0"
+
+        n += ch
+
     elif ch == "!":
         if n == "":
             print("잘못된 팩토리얼 사용입니다")
+            exit()
+
+        if "." in n:
+            print("팩토리얼은 정수만 가능합니다")
             exit()
 
         n = str(math.factorial(int(n)))
@@ -48,7 +62,7 @@ for ch in expression:
             print("뭔가 잘못된 수식입니다")
             exit()
 
-        apply(exStack, op, int(n) * plusminusSign)
+        apply(exStack, op, float(n) * plusminusSign)
         n = ""
         plusminusSign = 1
         op = ch
@@ -65,7 +79,7 @@ for ch in expression:
             print("어딘가 잘못된 수식입니다")
             exit()
 
-        apply(exStack, op, int(n) * plusminusSign)
+        apply(exStack, op, float(n) * plusminusSign)
 
         result = sum(exStack)
 
@@ -74,7 +88,7 @@ for ch in expression:
         plusminusSign = 1
 
 if n != "":
-    apply(exStack, op, int(n) * plusminusSign)
+    apply(exStack, op, float(n) * plusminusSign)
 
 print(sum(exStack))
 
@@ -94,5 +108,6 @@ print(sum(exStack))
 
 7. 팩토리얼을 넣고 싶었음
 '''
+
 
 
