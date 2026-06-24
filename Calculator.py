@@ -66,7 +66,7 @@ for ch in expression:
         plusminusSign = 1
 
 if n != "":
-    apply(exStack, op, int(n))
+    apply(exStack, op, int(n) * plusminusSign)
 
 print(sum(exStack))
 
